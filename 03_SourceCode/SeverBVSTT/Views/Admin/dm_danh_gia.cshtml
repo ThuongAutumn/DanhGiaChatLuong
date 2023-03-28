@@ -1,0 +1,478 @@
+﻿
+
+
+
+@{
+    Layout = "_LayoutHome";
+    ViewData["Title"] = "Đánh giá hài lòng khách hàng";
+    <script src="~/js/js.js"></script>
+    <script data-ad-client="ca-pub-5379163438190087" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+}
+<div class="container">
+    <label>Danh mục đánh giá</label><br />
+    <label>Tên:</label><label>The Coffee House</label><br />
+    <label>ID:</label><label id="idcuahang">13526352862736748</label>
+
+</div>
+<div>
+    <label for="cars">Chọn cửa hàng:</label>
+    <select id="cars">
+        <option value="bb">Bún bò</option>
+        <option value="tch">The Coffee House</option>
+        <option value="pz">Pizza Hut</option>
+        <option value="nhpan">Nhà Hàng Phúc An Khang</option>
+        <option value="ct">Căn Tin ĐHGTVT tp.HCM</option>
+        <option value="ts">Trà Sữa</option>
+        <option value="audi" selected>Cửa hàng</option>
+    </select>
+</div>
+
+
+
+<!---model dang xuat-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>Bạn có chắc muốn đăng xuất?</h3>
+            </div>
+            <div class="modal-footer">
+                <a href="/Home/signout" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Đăng Xuất</a>
+                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" data-bs-dismiss="modal">Đóng</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="height:550px; overflow: scroll">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>
+                    stt
+                </td>
+                <td>
+                    id
+                </td>
+                <td>
+                    id cửa hàng
+                </td>
+                <td>
+                    Nội dung
+                </td>
+                <td>
+                    Trạng thái
+                </td>
+                <td>
+                    Điểm
+                </td>
+            </tr>
+        </thead>
+        <tbody id="dm-tbody">
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <div class="row" style="">
+        <div class="col-2">
+            <label>ID:</label><label id="dmID"></label>
+        </div>
+    </div>
+    <div class="row" style="">
+        <div class="col-6">
+            <label>
+                ID cửa hàng:
+            </label>
+            <input id="dmID_CH" value="13526352862736748" class="form-control">
+        </div>
+        <div class="col-6">
+            <label>
+                Nội dung:
+            </label>
+            <input id="dmNoiDung" class="form-control">
+        </div>
+    </div>
+    <div class="row" style="">
+        <div class="col-6">
+            <label>
+                Trạng thái:
+            </label>
+            <input id="dmTrangThai" class="form-control">
+        </div>
+        <div class="col-6">
+            <label>
+                Điểm:
+            </label>
+            <input id="dmDiem" class="form-control">
+        </div>
+    </div>
+    @*<div class="row" style="">
+            <label>
+                Ghi chú:
+            </label>
+            <input id="kshl-ghichu" class="form-control" />
+        </div>*@
+    <div class="row justify-content-center" style="padding-top: 2%">
+        <div class="col-5">
+
+            <button id="btn-them" class="btn btn-info" onclick="btn_them()">Thêm</button>
+            <button id="btn-sua" class="btn btn-warning" onclick="btn_sua()">Sửa</button>
+            <button id="btnLuu" class="btn btn-success" onclick="btn_luu()">Lưu</button>
+            <button id="btnBoQua" class="btn btn-success" onclick="btn_boqua()">Bỏ qua</button>
+            <button id="btn-xoa" class="btn btn-danger" onclick="btn_xoa()">Xóa</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var Display = 0;// 0 mt// 1 điện thoại 2// tivi
+    var dmID = document.getElementById("dmID").innerText;
+    var dmID_CH = document.getElementById("dmID_CH").value;
+    var dmNoiDung = document.getElementById("dmNoiDung").value;
+    var dmTrangThai = document.getElementById("dmTrangThai").value;
+    var dmDiem = document.getElementById("dmDiem").value;
+
+    var obj_dm = new Object();
+    function loaddulieu() {
+        dmID = document.getElementById("dmID").innerText;
+        dmID_CH = document.getElementById("dmID_CH").value;
+        dmNoiDung = document.getElementById("dmNoiDung").value;
+        dmTrangThai = document.getElementById("dmTrangThai").value;
+        dmDiem = document.getElementById("dmDiem").value;
+    }
+    window.onload = function () { //window.onload su kien tu dong khi load xong
+        var x = screen.width;
+        var y = screen.height;
+        if (x < 480) {
+            Display = 1;
+        } else if (y < 480) {
+            Display = 1;
+        } else {
+
+        }
+        // alert (" b1")
+
+        load_noidung();//
+        disabale_btn();
+        disabale_input();
+    };
+    //tim kiem
+    function td_tk_cd(block_show, block_close) {
+        $("#" + block_close).toggle(300);
+        $("#" + block_show).show(300);
+    }
+
+    function kiemtra() {
+        return new Promise(function (resolve, reject) {
+            try {
+
+                /// lap trinh bat dong bo// tat ca cho doi dua het vao day
+                resolve(1);
+
+            } catch {
+                reject(0); //  Promise ở trạng thái reject
+            }
+        });
+    }
+
+    // query ////////////////////////////////////////////
+    async function load_noidung() {
+        //  alert("b2");
+        let kq = await load_dm();
+        //alert(kq)
+        if (kq == 1) {
+            tb_themdm_();
+        } else {
+            //  alert("b3");
+        }
+    }
+    // update ==================================================================================================
+    function btn_them() {
+        //mo nut luu
+        document.getElementById("btnLuu").disabled = false;
+        enable_input();
+
+    }
+    function btn_sua() {
+        enable_btn();//
+
+    }
+    async function btn_luu() {
+        alert('da vao luu');
+        let kt = await kiemtra();
+        if (kt == 1) {
+            luu_();
+        } else {
+            alert("Kiểm tra lại thông tin!");
+        }
+    }
+    function btn_boqua() {
+        disabale_btn();
+        disabale_input();
+    }
+    function btn_xoa(a) {
+        return new Promise(function (resolve, reject) {
+            try {
+                loaddulieu();
+                if (a == null) {
+                    a = document.getElementById("dmdanhgia").innerText;
+                }
+                var o = {
+                    'dmdanhgia': `${a}`
+                };//icd_chinh
+                ajax.post(o, '/khaosathailong/xoa_dmdanhgia', function (data) {
+                    kq = JSON.parse(data);
+                    if (kq.i_TrangThai_0_1 == "1") {
+                        load_noidung();
+                        btn_boqua();
+                        alert("Xóa thành công!");
+                        resolve(1);
+                    } else {
+                        alert("Xóa không thành công!");
+                        resolve(0);
+                    }
+                });
+
+            } catch {
+                reject(0); //  Promise ở trạng thái reject
+            }
+        });
+    }
+    function luu_() {
+        //alert(" da vao luu bat dau gắn du lieu vao biến dua xuong sever");
+        return new Promise(function (resolve, reject) {
+            try {
+                loaddulieu();
+                var o = {
+                    'id': `${dmID}`, 'id_ch': `${dmID_CH}`, 'noidung': `${dmNoiDung}`, 'trangthai': `${dmTrangThai}`,
+                    'diem': `${dmDiem}`,
+
+                };//icd_chinh
+                alert(0);
+                ajax.post(o, '/admin/udp_dm_danhgia', function (data) {
+                    alert(data);
+                    kq = JSON.parse(data);
+                    if (kq.i_TrangThai_0_1 == "1") {
+                        alert("Lưu thành công!");
+                        resolve(1);
+                        load_noidung();
+                        btn_boqua();
+                        //document.getElementById("b-ttbn").disabled = false;
+                    } else {
+                        alert("Lưu không thành công!");
+                        resolve(0);
+                        //document.getElementById("b-ttbn").disabled = false;
+                    }
+                });
+                //resolve(1); //  Promise ở trạng thái reject
+            } catch {
+                reject(0); //  Promise ở trạng thái reject
+            }
+        });
+    }
+    function load_dm() {
+        return new Promise(function (resolve, reject) {
+            try {
+                // alert('b4');
+                var o = {
+                    'id': `${dmID}`, 'id_ch': `${dmID_CH}`, 'noidung': `${dmNoiDung}`, 'trangthai': `${dmTrangThai}`,
+                    'diem': `${dmDiem}`
+                };//icd_chinh
+
+                ajax.post(o, '/admin/load_dm_danhgia', function (data) {
+                    //alert("hien thi ok");
+                    //alert(data);
+                    obj_dm = JSON.parse(data);
+                    resolve(1);
+                });
+            } catch (e) {
+                reject(0);
+            }
+        });
+    }
+    async function load_id() {
+
+        let kq = await load_dm();
+        if (kq == 1) {
+            tb_themdm_();
+        } else {
+            alert("lỗi load danh mục!")
+        }
+    }
+    function tb_themdm_() {
+
+
+        /// cho nay no viet ra cai bang kia
+        // dua vao json tra vien no viet ra obj.. dung vao key lay gia tri ra
+        let dp = "'";
+        let dm_tbody = document.getElementById("dm-tbody");// khai bao doi tuong bang cang thao tac
+
+        $("#dm-tbody").empty();// xoas het cac dong troong bang do
+
+        // bat dau chay for chay het mang doi tuong do
+        for (var i = 0; i < obj_dm.length; i++) {
+            // stt nay là tự tạo ăn theo thằng i chứ data ko có
+            let a = '<td>' + (i + 1) + '</td>'
+            // trong json ve khongc co stt
+
+            a = a + '<td>' + obj_dm[i].id + '</td>'
+            a = a + '<td>' + obj_dm[i].id_ch + '</td>'
+            a = a + '<td>' + obj_dm[i].noidung + '</td>'
+            a = a + '<td>' + obj_dm[i].trangthai + '</td>'
+            a = a + '<td>' + obj_dm[i].diem + '</td>'
+
+
+            a = a + '<td class="dm-xoa" onclick="btn_xoa(' + dp + '' + obj_dm[i].id + '' + dp + ')">Xóa</td>'
+            let str = '<tr class="row_tb" onclick="chondm(' + dp + '' + obj_dm[i].id + '' + dp + ')">' + a + '</tr>';
+            // chon cho nay// no gui luon id vao luôn rôi nen qua ham chondm nó biết là chọn ai
+            $(dm_tbody).append(str)
+            // cai mau xanh do duua vao row_tb
+        }
+    }
+    async function chondm(a_) {
+        //alert('may moi chon vao tao day; id cua tui la:  ' + a_)
+        document.getElementById("dmID").innerText = a_;
+        //document.getElementById("btn-sua").disabled = false;
+        //document.getElementById("btnLuu").disabled = true;
+        //document.getElementById("btn-xoa").disabled = true;
+        for (var i = 0; i < obj_dm.length; i++) {
+            if (a_ == obj_dm[i].id) {
+                document.getElementById("dmID").value = obj_dm[i].ID;
+                document.getElementById("dmID_CH").value = obj_dm[i].id_ch;
+                document.getElementById("dmNoiDung").value = obj_dm[i].noidung;
+                document.getElementById("dmTrangThai").value = obj_dm[i].trangthai;
+                document.getElementById("dmDiem").value = obj_dm[i].diem;
+
+            }
+        }
+        document.getElementById("btn-sua").disabled = false;
+    }
+    function disabale_btn() {
+        document.getElementById("btn-sua").disabled = true;
+        document.getElementById("btnLuu").disabled = true;
+        document.getElementById("btn-xoa").disabled = true;
+    }
+    function enable_btn() {
+        document.getElementById("btn-sua").disabled = false;
+        document.getElementById("btnLuu").disabled = false;
+        document.getElementById("btn-xoa").disabled = false;
+        // inphut
+        document.getElementById("dmID").disabled = false;
+        document.getElementById("dmID_CH").disabled = false;
+        document.getElementById("dmNoiDung").disabled = false;
+        document.getElementById("dmTrangThai").disabled = false;
+        document.getElementById("dmDiem").disabled = false;
+
+
+    }
+    function disabale_input() {
+        //document.getElementById("kshl-ma").innerText = "";
+        //document.getElementById("kshl-noidung").value = "";
+        //document.getElementById("kshl-noidung").disabled = true;
+        //document.getElementById("kshl-ghichu").value = "";
+        //document.getElementById("kshl-ghichu").disabled = true;
+
+        document.getElementById("dmID").innerText = "";
+        document.getElementById("dmID_CH").value = "";
+        document.getElementById("dmID_CH").disabled = true;
+        document.getElementById("dmNoiDung").value = "";
+        document.getElementById("dmNoiDung").disabled = true;
+        document.getElementById("dmTrangThai").value = "";
+        document.getElementById("dmTrangThai").disabled = true;
+        document.getElementById("dmDiem").value = "";
+        document.getElementById("dmDiem").disabled = true;
+
+
+
+
+    }
+    function enable_input() {
+        //document.getElementById("kshl-ma").innerText = "";
+        //document.getElementById("kshl-noidung").value = "";
+        //document.getElementById("kshl-noidung").disabled = false;
+        //document.getElementById("kshl-ghichu").value = "";
+        //document.getElementById("kshl-ghichu").disabled = false;
+
+        document.getElementById("dmID").innerText = "";
+        document.getElementById("dmID_CH").value = "";
+        document.getElementById("dmID_CH").disabled = false;
+        document.getElementById("dmNoiDung").value = "";
+        document.getElementById("dmNoiDung").disabled = false;
+        document.getElementById("dmTrangThai").value = "";
+        document.getElementById("dmTrangThai").disabled = false;
+        document.getElementById("dmDiem").value = "";
+        document.getElementById("dmDiem").disabled = false;
+
+    }
+</script>
+<style>
+    .xoatd {
+        padding-bottom: 0;
+        padding-top: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .left-center {
+        justify-content: left;
+        align-items: center;
+        display: flex;
+    }
+
+    .right-center {
+        justify-content: right;
+        align-items: center;
+        display: flex;
+    }
+
+    .center {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    a_img {
+        /*border-radius: 30px !important*/
+    }
+
+    input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    .td-tk {
+        margin: 0;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        border-bottom: solid;
+        border-color: greenyellow
+    }
+
+    input {
+        font-weight: bold;
+        font-size: 20px !important
+    }
+
+    section {
+        font-weight: bold;
+        font-size: 20px !important
+    }
+
+    textarea {
+        font-weight: bold;
+        font-size: 20px !important
+    }
+
+    #test1 {
+        position: absolute;
+        left: 0px;
+        bottom: 200px;
+    }
+    /*  hover là đua chuot vao*/
+    .row_tb:hover {
+        background-color: greenyellow;
+    }
+
+    .dm-xoa:hover {
+        background-color: red;
+        cursor: alias;
+    }
+</style>

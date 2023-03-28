@@ -1,0 +1,293 @@
+﻿
+@{
+    Layout = "_LayoutHome";
+    ViewData["Title"] = "DanhGiahaiLongKH";
+    @*<link href="~/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    @*<link href="~/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    <script src="~/js/js.js"></script>
+    <script data-ad-client="ca-pub-5379163438190087" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+}
+
+
+
+<!--menu-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+
+        <img src="~/image/logo/logoTH.jpg" style="width:130px"/>
+        @*<img src="~/image/logo/logooo.jpg" style="width:90px"/>*@
+        <a class="navbar-brand" href="/home/index" style="color: orange; font-size: 200%; line-height: 46px; padding: 0 30px ">SamSam</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+                <li class="nav-item">
+                    <a class="nav-link active" style="font-size:20px; line-height:46px; padding: 0 24px" aria-current="page" href="#">Đánh giá online</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="font-size: 20px; line-height: 46px; padding: 0 24px "  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Danh mục
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">1.Tin tức</a></li>
+                        <li><a class="dropdown-item" href="#">2.Thể loại</a></li>
+
+                    </ul>
+                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        <a class=" navbar-brand btn btn-group" data-toggle="modal" data-target="#TTTaiKhoan">
+                            <span class="glyphicon glyphicon-user" style="color:brown"></span><label id="tennd">@User.Identity.Name</label><span class="caret"></span>
+                        </a>
+                    </li>
+
+                }
+                else
+                {
+                    <li>
+                        <a class=" navbar-brand btn btn-group" data-toggle="modal" data-target="#dangNhap" >
+                            <span class="glyphicon glyphicon-user" style="color: brown; padding: 0 24px "></span>Đăng nhập<span class="caret"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class=" navbar-brand btn btn-group" data-toggle="modal" data-target="#dangKy" >
+                            <span class="bi bi-box-arrow-left" style="color: brown; padding: 0 24px "></span>Đăng Ký<span class="caret"></span>
+                        </a>
+                    </li>
+                }
+            </ul>
+            @*<form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>*@
+        </div>
+    </div>
+</nav>
+
+
+<!--body-->
+<h1 style="text-align:center">
+    Hãy đánh giá sự hài lòng của bạn.
+</h1>
+<div class="container">
+    <!--Tìm kiem-->
+    <div class="row" style="margin-bottom: 2%">
+        <div class="col-md-6 col-sm-12">
+            <div class="row">
+                <div class="col-8">
+                    <input class="form-control" placeholder="Nhập cửa hàng bạn cần tìm" />
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-success">Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 text-center">
+            <button class="btn btn-info">Tìm QR Code</button>
+        </div>
+    </div>
+    <!--danh muc cua hang-->
+    <div id="dm_cuahang" class="row" style="margin-bottom: 2%">
+
+
+        @*<div class="col-4" style="text-align :center">
+                    <a href="/danhgiastore/index" style="text-decoration: none">
+                        <img src="~/image/logoCH/piza.jpg" style="width:46%" /><br />
+                        Pizza Hut
+                    </a>
+                </div>
+                <div class="col-4" style="text-align :center">
+                    <a href="/danhgiastore/index" style="text-decoration: none">
+                        <img src="~/image/logoCH/nhahang.jpg" style="width:50%" /><br />
+                        Nhà Hàng Phúc An Khang
+                    </a>
+                </div>
+                <div class="col-4" style="text-align :center">
+                    <img src="~/image/logoCH/coffe.jpg" style="width:53%" /> <br />
+                    <a href="/danhgiastore/index" style="text-decoration: none">The Coffee House</a>
+                </div>
+
+
+            </div>
+            <div ="dm_cuahang1" class="row" style="margin-bottom: 2%">
+                <div class="col-4" style="text-align :center">
+                    <a href="/danhgiastore/index" style="text-decoration: none">
+                        <img src="~/image/logoCH/bunbo.jpg" style="width:50%" /><br />
+                        Bún Bò
+                    </a>
+                </div>
+                <div class="col-4" style="text-align :center">
+                    <a href="/danhgiastore/index" style="text-decoration: none">
+                        <img src="~/image/logoCH/cantingt.jpg" style="width:50%" /><br />
+                        Căn Tin ĐH GTVT tp.HCM
+                    </a>
+                </div>
+                <div class="col-4" style="text-align :center">
+                    <img src="~/image/logoCH/trasua.jpg" style="width:50%" /> <br />
+                    <a href="/danhgiastore/index" style="text-decoration: none">Trà Sữa</a>
+                </div>
+            </div>*@
+
+        <!--danh muc đánh giá-->
+        <div id="dm_danhgia" class="row" style="margin-bottom: 2%">
+        </div>
+    </div>
+</div>
+
+
+
+
+    <footer>
+        <div class="row" style="padding: 15px;">
+            <div class="col-4">
+                <div class="accordion-body" style="color: black; font-size: 15px;"> Giới thiệu:</div> <br />
+                Khảo sát sự hài lòng khách hàng là hoạt động kiểm tra lại chất lượng của sản phẩm/ dịch vụ qua thái độ của khách hàng, nhằm cung cấp đầy đủ thông tin, nhận xét của họ để doanh nghiệp kịp thời điều chỉnh cũng như quản lý sản phẩm/ dịch vụ của mình. Khách hàng cũng sẽ cảm thấy được khuyến khích đóng góp vào cuộc khảo sát khi họ biết các doanh nghiệp đánh giá cao ý kiến ​​của họ.<br />
+                Tên website: SamSam<br />
+                Liên hệ: 098372947<br />
+                Gmail: thuong@gmail.com<br />
+                Mã thuế: 89654367<br />
+            </div>
+            <div class="col-4">
+                <div class="accordion-body" style="color: black; font-size: 15px;"> Công dụng sản phẩm:</div> <br />
+                Sự hài lòng của khách hàng là phản ánh cảm nhận của khách hàng đối với chất lượng sản phẩm hoặc dịch vụ của công ty. Giúp các doanh nghiệp hiểu được mong đợi của người tiêu dùng và cách để có thể đáp ứng nhu cầu của họ. Những thông tin chi tiết này rất hữu ích trong việc hướng dẫn các thương hiệu cải thiện mức độ hài lòng của khách hàng và đảm bảo trải nghiệm của họ có tác động tích cực.<br />
+                Tin tức
+            </div>
+            <div class="col-4">
+                <div class="accordion-body" style="color: black; font-size: 15px;"> Theo dõi chúng tôi tại:</div> <br />
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                </svg>
+                <i class="bi bi-youtube"></i>
+                Youtobe<br />
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                </svg>
+                <i class="bi bi-facebook"></i>
+                Facbook<br />
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-map" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z" />
+                </svg>
+                <i class="bi bi-map"></i>
+                Maps
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31346.302280153646!2d106.58521950244906!3d10.865702167857119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b2a11844fb9%3A0xbed3d5f0a6d6e0fe!2zVFLGr-G7nE5HIMSQ4bqgSSBI4buMQyBHSUFPIFRIw5RORyBW4bqsTiBU4bqiSSBUUC5IQ00gW0PGoCBT4bueIDNd!5e0!3m2!1svi!2s!4v1668134319700!5m2!1svi!2s" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+
+            </div>
+        </div>
+        <p>
+            SamSam@2023<br>
+        </p>
+    </footer>
+
+
+
+
+
+
+    <style>
+
+        p {
+            text-align: center;
+            color: black;
+        }
+
+        body {
+            padding: 3px;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: DarkSalmon;
+            color: white;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var Display = 0;// 0 mt// 1 điện thoại 2// tivi
+        var obj_dm = new Object();
+        window.onload = function () { //window.onload su kien tu dong khi load xong
+            var x = screen.width;
+            var y = screen.height;
+
+
+            if (x < 480) {
+                Display = 1;
+            } else if (y < 480) {
+                Display = 1;
+            } else {
+
+            }
+            // alert (" b1")
+            load_noidung();
+
+        };
+        async function load_noidung() {
+            //  alert("b2");
+            let kq = await load_dm();
+
+            if (kq == 1) {
+                tb_themdm_();
+            } else {
+                //  alert("b3");
+            }
+        }
+        function load_dm() {
+            return new Promise(function (resolve, reject) {
+                try {
+                    // alert('b4');
+                    let dmID = 'sdfsdfjk';
+                    var o = {
+                        'id': `${dmID}`
+                    };//icd_chinh
+                    /// loix taij day cos 2 casis bien 0
+                    ajax.post(o, '/admin/load_dm_cuahang', function (data) {
+
+                        //alert("hien thi ok");
+                        // alert(data);
+                        obj_dm = JSON.parse(data);
+                        resolve(1);
+                    });
+                } catch (e) {
+                    reject(0);
+                }
+            });
+        }
+        function tb_themdm_() {
+            /// cho nay no viet ra cai bang kia
+            // dua vao json tra vien no viet ra obj.. dung vao key lay gia tri ra
+            let dp = "'";
+            let dm_cuahang = document.getElementById("dm_cuahang");// khai bao doi tuong bang cang thao tac
+
+            $("#dm_cuahang").empty();// xoas het cac dong troong bang do
+            // bat dau chay for chay het mang doi tuong do
+            for (var i = 0; i < obj_dm.length; i++) {
+                //<img src="~/image/logo/HighlandCoffee.jpg" style="width:50%"/> <br/>
+
+                let chitiet = '<img src="/image/logo/logoo.jpg"  style="width:50%"/><br/>' + obj_dm[i].ten + ''
+                let con = '<a href="/danhgiastore/index?code=' + obj_dm[i].id + '&ten=' + obj_dm[i].ten + '" style="text-decoration: none">' + chitiet + '</a>'
+                let cha = '<div class="col-4" style="text-align :center">' + con + '</div>'
+
+
+
+
+                //a = a + '<td class="dm-xoa" onclick="btn_xoa(' + dp + '' + obj_dm[i].id + '' + dp + ')">Xóa</td>'
+                //let str = '<tr class="row_tb" onclick="chondm(' + dp + '' + obj_dm[i].id + '' + dp + ')">' + a + '</tr>';
+                // chon cho nay// no gui luon id vao luôn rôi nen qua ham chondm nó biết là chọn ai
+                $(dm_cuahang).append(cha)
+                // cai mau xanh do duua vao row_tb
+            }
+        }
+
+
+
+    </script>
+

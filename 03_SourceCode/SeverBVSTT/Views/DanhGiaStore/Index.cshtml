@@ -1,0 +1,572 @@
+﻿@model DMCuaHang
+@{
+    Layout = "_LayoutHome";
+    ViewData["Title"] = "Đánh giá hài lòng khách hàng";
+    @*<link href="~/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    @*<link href="~/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    <script src="~/js/js.js"></script>
+    <script data-ad-client="ca-pub-5379163438190087" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+}
+<!--menu-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <img src="~/image/logo/logoTH.jpg" style="width:130px"/>
+     
+        <a class="navbar-brand" href="/home/index" style="color: orange; font-size: 200%; line-height: 46px; padding: 0 30px">SamSam</a>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" style="font-size:20px; line-height:46px; padding: 0 24px" aria-current="page" href="#">Đánh giá online</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"style="font-size: 20px; line-height: 46px; padding: 0 24px " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Danh mục
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">1.Tin tức</a></li>
+                        <li><a class="dropdown-item" href="#">2.Thể loại</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<h1>Đánh giá hài lòng khách hàng</h1>
+<h1>Tên cửa hàng : @Model.ten</h1>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-12" style="text-align :center">
+            <a href="" style="text-decoration: none">
+                <img src="" style="width:15%" /><br />
+                <h3>@Model.ten</h3>
+                <label id="idch">@Model.id</label>
+
+            </a>
+        </div>
+
+    </div>
+    @*<div class="row">
+            <label>tuổi</label>
+            <input type="number" />
+        </div>*@
+
+
+
+
+    @*<div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            <label class="form-check-label" for="inlineCheckbox1">1</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+            <label class="form-check-label" for="inlineCheckbox2">2</label>
+        </div>*@
+
+
+    <!--menu-->
+    <div class="group_cauhoi">
+        <div class="title_cauhoi">
+            <b>1. Chất lượng sản phẩm</b>
+        </div>
+        <ul class="group-cautraloi list-inline">
+            <li>
+                <label class="mt-radio disabled">
+                    <input class="rad-dis" id="TLRDO_4134" name="TLRDO_4134" type="radio" value="17070"><font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">
+                            ①
+                        </font>
+                    </font><span></span>
+                </label>
+            </li>
+            <li>
+                <label class="mt-radio disabled">
+                    <input class="rad-dis" id="TLRDO_4134" name="TLRDO_4134" type="radio" value="17117"><font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">
+                            ②
+                        </font>
+                    </font><span></span>
+                </label>
+            </li>
+            <li>
+                <label class="mt-radio disabled">
+                    <input class="rad-dis" id="TLRDO_4134" name="TLRDO_4134" type="radio" value="17118"><font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">
+                            ③
+                        </font>
+                    </font><span></span>
+                </label>
+            </li>
+            <li>
+                <label class="mt-radio disabled">
+                    <input class="rad-dis" id="TLRDO_4134" name="TLRDO_4134" type="radio" value="17165"><font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">
+                            ④
+                        </font>
+                    </font><span></span>
+                </label>
+            </li>
+            <li>
+                <label class="mt-radio disabled">
+                    <input class="rad-dis" id="TLRDO_4134" name="TLRDO_4134" type="radio" value="17166"><font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">
+                            ⑤
+                        </font>
+                    </font><span></span>
+                </label>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nội dung đánh giá</th>
+                    <td>
+                        <img src="~/image/icon/rkhl.jpg" style="width:30px" />
+                        Rất không hài lòng
+                    </td>
+
+                    <td>
+                        <img src="~/image/icon/khl1.jpg" style="width:30px" />
+                        Không hài lòng
+                    </td>
+                    <td>
+                        <img src="~/image/icon/kyk.jpg" style="width:30px" />
+                        Bình thường
+                    </td>
+                    <td>
+                        <img src="~/image/icon/hl.jpg" style="width:30px" />
+                        Hài lòng
+                    </td>
+                    <td>
+                        <img src="~/image/icon/rhl.jpg" style="width:30px" />
+                        Rất hài lòng
+                    </td>
+                    <!--<td>-->
+                    @*gắn mặt cười*@
+                    <!--<img src="~/image/icon/rkhl.jpg" style="width:50px" />
+                    </td>
+
+                    <td>
+                        <img src="~/image/icon/khl1.jpg" style="width:50px" />
+                    </td>
+                    <td>
+
+                        <img src="~/image/icon/kyk.jpg" style="width:50px" />
+                    </td>
+                    <td>
+
+                        <img src="~/image/icon/hl.jpg" style="width:50px" />
+                    </td>
+                    <td>
+                        <img src="~/image/icon/rhl.jpg" style="width:50px" />
+                    </td>-->
+                </tr>
+            </thead>
+            <tbody id="dm_danhgia">
+                @*<tr>
+                        <th>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <label class="form-check-label" for="inlineRadio2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                <label class="form-check-label" for="inlineRadio3">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                                <label class="form-check-label" for="inlineRadio4">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+                                <label class="form-check-label" for="inlineRadio5">5</label>
+                            </div>
+                        </th>
+
+                    </tr>*@
+
+
+
+
+                @*<tr>
+                        <td class="content_">1.Nhân viên</td>
+                        <td><input id="c1_1" class="form-check-input " name="1" type="radio" value="1" /><label for="c1_1"> &#128545; </label> </td>
+                        <td><input id="c1_2" class="form-check-input " name="1" type="radio" value="2" /><label for="c1_2"> &#128530; </label> </td>
+                        <td><input id="c1_3" class="form-check-input " name="1" type="radio" value="3" /><label for="c1_3"> &#128528; </label> </td>
+                        <td><input id="c1_4" class="form-check-input " name="1" type="radio" value="4" /><label for="c1_4"> &#128515; </label> </td>
+                        <td><input id="c1_5" class="form-check-input " name="1" type="radio" value="5" /><label for="c1_5"> &#128525; </label> </td>
+                    </tr>*@
+
+                @*<tr>
+                        <th scope="row">Bạn có hài lòng về chất lượng phục vụ của nhân viên?</th>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6">
+                                <label class="form-check-label" for="inlineCheckbox6">Rất không hài lòng</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7">
+                                <label class="form-check-label" for="inlineCheckbox7">Không hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="option8">
+                                <label class="form-check-label" for="inlineCheckbox8">Không có ý kiến</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9">
+                                <label class="form-check-label" for="inlineCheckbox9">Hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="option10">
+                                <label class="form-check-label" for="inlineCheckbox10">Rất hài lòng</label>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Bạn có cảm thấy thoải mái với không gian tại nhà hàng?</th>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox11" value="option11">
+                                <label class="form-check-label" for="inlineCheckbox11">Rất không hài lòng</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox12" value="option12">
+                                <label class="form-check-label" for="inlineCheckbox12">Không hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox13" value="option13">
+                                <label class="form-check-label" for="inlineCheckbox13">Không có ý kiến</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox14" value="option14">
+                                <label class="form-check-label" for="inlineCheckbox14">Hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox15" value="option15">
+                                <label class="form-check-label" for="inlineCheckbox15">Rất hài lòng</label>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Bạn cảm thấy thời gian chờ đợi món ăn ra sao? </th>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox16" value="option16">
+                                <label class="form-check-label" for="inlineCheckbox16">Rất không hài lòng</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox17" value="option17">
+                                <label class="form-check-label" for="inlineCheckbox17">Không hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox18" value="option18">
+                                <label class="form-check-label" for="inlineCheckbox18">Không có ý kiến</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox19" value="option19">
+                                <label class="form-check-label" for="inlineCheckbox19">Hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox20" value="option20">
+                                <label class="form-check-label" for="inlineCheckbox20">Rất hài lòng</label>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Bạn có hài lòng về quy trình phục vụ tại nhà hàng?</th>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox21" value="option21">
+                                <label class="form-check-label" for="inlineCheckbox21">Rất không hài lòng</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox22" value="option22">
+                                <label class="form-check-label" for="inlineCheckbox22">Không hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox23" value="option23">
+                                <label class="form-check-label" for="inlineCheckbox23">Không có ý kiến</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox24" value="option24">
+                                <label class="form-check-label" for="inlineCheckbox24">Hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox25" value="option25">
+                                <label class="form-check-label" for="inlineCheckbox25">Rất hài lòng</label>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Bạn có hài lòng về số tiền mà mình đã bỏ ra hay không?</th>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox31" value="option31">
+                                <label class="form-check-label" for="inlineCheckbox31">Rất không hài lòng</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox32" value="option32">
+                                <label class="form-check-label" for="inlineCheckbox32">Không hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox33" value="option33">
+                                <label class="form-check-label" for="inlineCheckbox33">Không có ý kiến</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox34" value="option34">
+                                <label class="form-check-label" for="inlineCheckbox34">Hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox35" value="option35">
+                                <label class="form-check-label" for="inlineCheckbox35">Rất hài lòng</label>
+
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Bạn có hài lòng về vấn đề vệ sinh ở nhà hàng không?</th>
+
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox26" value="option26">
+                                <label class="form-check-label" for="inlineCheckbox26">Rất không hài lòng</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox27" value="option27">
+                                <label class="form-check-label" for="inlineCheckbox27">Không hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox28" value="option28">
+                                <label class="form-check-label" for="inlineCheckbox28">Không có ý kiến</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox29" value="option29">
+                                <label class="form-check-label" for="inlineCheckbox29">Hài lòng</label>
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox30" value="option30">
+                                <label class="form-check-label" for="inlineCheckbox30">Rất hài lòng</label>
+
+                            </div>
+                        </td>
+                    </tr>*@
+
+
+
+            </tbody>
+        </table>
+        <form action="/action_page.php">
+            <div class="mb-3 mt-3">
+                <label for="comment">Nhận xét của bạn:</label>
+                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+            </div>
+        </form>
+
+
+
+    </div>
+    <div class="row text-center">
+        <div class="col-4 col-lg-offset-4" style="padding-bottom:10%">
+            <button class="btn btn-secondary"> Gửi đánh giá</button>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function () { //window.onload su kien tu dong khi load xong
+        var x = screen.width;
+        var y = screen.height;
+        if (x < 480) {
+            Display = 1;
+        } else if (y < 480) {
+            Display = 1;
+        } else {
+
+        }
+        // alert (" b1")
+        load_noidung();
+    };
+    async function load_noidung() {
+        //  alert("b2");
+        let kq = await load_dm();
+
+        if (kq == 1) {
+           tb_themdm_();
+        } else {
+            //  alert("b3");
+        }
+    }
+    function load_dm() {
+        return new Promise(function (resolve, reject) {
+            try {
+                // alert('b4');
+                let dmID = document.getElementById('idch').textContent;
+                var o = {
+                    'id': `${dmID}`
+                };//id_chinh
+                /// loi tai day cos 2 casis bien 0
+                ajax.post(o, '/danhgiastore/load_dm_cuahang', function (data) {
+                    
+                    //alert("hien thi ok");
+                    //alert(data);
+                    obj_dm = JSON.parse(data);
+                    resolve(1);
+                });
+            } catch (e) {
+                reject(0);
+            }
+        });
+    }
+
+
+    function tb_themdm_() {
+        let dp = "'";
+        let dm_danhgia = document.getElementById("dm_danhgia");// khai bao doi tuong bang cang thao tac
+
+        $("#dm_danhgia").empty();// xoas het cac dong troong bang do
+        // bat dau chay for chay het mang doi tuong do
+        for (var i = 0; i < obj_dm.length; i++) {
+            //<input class="form-check-input" type="checkbox" id="inlineCheckbox24" value="option24">
+            //<label class="form-check-label" for="inlineCheckbox24">Hài lòng</label>
+
+            let tiet = ' <label class="form-check-label" for="inlineRadio1"></label>' + 1 + '</label>'
+            let chi = '  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">'+ tiet +''
+            let chitiet = '<div class="form-check form-check-inline">' + chi + '</div>'
+            let con = '<th scope="col">' + obj_dm[i].noidung + ('<td>' + chitiet + '</td>') + ('<td> ' + chitiet + '</td>') + ('<td> ' + chitiet + '</td>') + ('<td> ' + chitiet + '</td>') + ('<td> ' + chitiet + '</td>')+'</th>'
+            let cha = '<tr>' + con + ' </tr>'
+
+
+            
+             //let chitiet = '<img src="~/image/logo/download (1).png" style="width:50%" /><br />' + obj_dm[i].ten + ''
+            //let con = '<a href="/danhgiastore/index?code=' + obj_dm[i].id + '&ten=' + obj_dm[i].ten + '" style="text-decoration: none">' + chitiet + '</a>'
+            //let cha = '<div class="col-4" style="text-align :center">' + con + '</div>'
+
+
+
+            //let a = '<td>' + (i + 1) + '</td>';
+            //a = a + '<td><strong>' + obj_dm_kshl[i].noidung + '</strong></td>';
+            //a = a + '<td class="td-cx"><input id="' + obj_dm[i].ma + '-1" class="form-check-input " name="' + obj_dm[i].ma + '" type="radio" value="1" /><label for="' + obj_dm[i].ma + '-1"> <span>&#128545;</span> </label></td>';
+            //a = a + '<td class="td-cx"><input id="' + obj_dm[i].ma + '-2" class="form-check-input " name="' + obj_dm[i].ma + '" type="radio" value="2" /><label for="' + obj_dm[i].ma + '-2"> <span>&#128530;</span> </label></td>';
+            //a = a + '<td class="td-cx"><input id="' + obj_dm[i].ma + '-3" class="form-check-input " name="' + obj_dm[i].ma + '" type="radio" value="3" /><label for="' + obj_dm[i].ma + '-3"> <span>&#128528;</span> </label></td>';
+            //a = a + '<td class="td-cx"><input id="' + obj_dm[i].ma + '-4" class="form-check-input " name="' + obj_dm[i].ma + '" type="radio" value="4" /><label for="' + obj_dm[i].ma + '-4"> <span>&#128515;</span> </label></td>';
+            //a = a + '<td class="td-cx"><input id="' + obj_dm[i].ma + '-5" class="form-check-input " name="' + obj_dm[i].ma + '" type="radio" value="5" /><label for="' + obj_dm[i].ma + '-5"> <span>&#128525;</span> </label></td>';
+
+            //let str = '<tr class="row_tb" onclick="chondm(' + dp + '' + obj_dm[i].ma + '' + dp + ')">' + a + '</tr>';
+            
+
+
+            $(dm_danhgia).append(cha)
+        }
+    }
+
+
+
+
+</script>

@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <link href="~/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    @*<script src="~/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>*@
+    <link rel="icon" href="~/image/icon/HGSoft.png" />
+    <!--bootrasp -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!--link bieu tuong-->
+    <link href="/css/LayoutHome.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*<title>Font Awesome Icons</title>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>*@
+</head>
+<body>
+    <!--Đăng Nhập-->
+    <div class="modal fade" id="dangNhap" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Đăng nhập</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nhập Email</label>
+                        <label id="tb_loi"></label>
+                        <input id="Email" type="text" class="form-control" placeholder="Email đăng nhập">
+                    </div>
+                    <div class="form-group">
+                        <label>Nhập Password</label>
+                        <label id="tb_loi"></label>
+                        <input id="Ma" type="text" class="form-control" placeholder="Mật khẩu đăng nhập">
+                    </div>
+                    <div class="form-group">
+                        <label>Nhớ mã</label>
+                        <input id="NhoMa" type="checkbox" checked="checked" />
+                    </div>
+                    <div class="text-center" style="margin-bottom: 2%">
+                        <button class="btn btn-primary btn-lg" onclick="Gui()">Đăng Nhập</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Thoát</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Đăng ký-->
+    <div class="modal fade" id="dangKy" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Đăng Ký</h3>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>Nhận tên</label>
+                            <input id="dkTen" type="text" class="form-control" placeholder="Tên doanh nghiệp">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input id="dkEmail" type="text" class="form-control" placeholder="Nhập email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input id="dkPassword" type="password" class="form-control" placeholder="Nhập password">
+                    </div>
+                    <div class="form-group">
+                        <label>Nhập lại password</label>
+                        <label id="tb_loi"></label>
+                        <input id="dkAgainPass" type="password" class="form-control" placeholder="Nhập lại password">
+                    </div>
+                    <div class="col-12">
+                        <div class="text-center" style="margin-bottom: 2%">
+                            <button class="btn btn-primary btn-lg" onclick="GuiEmail()">Đăng Ký</button>
+                        </div>
+                    </div>
+                    @*<div class="text-center" style="margin-bottom: 2%">
+                        <button class="btn btn-primary btn-lg" onclick="DKGui()">dkGửi</button>
+                    </div>*@
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Thoát</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <!--model thong tin ca nhan-->
+        <div class="modal fade" id="TTTaiKhoan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Người dùng: <span class="glyphicon glyphicon-user"></span> @User.Identity.Name</h3>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-danger btn-lg active" role="button" aria-pressed="true" style="float: left" data-toggle="modal" data-target="#exampleModal" onclick="dongTTTaikhoan()">Đăng Xuất</a>
+                        <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true" data-dismiss="modal">Đóng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--model dang xuat-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h3>Bạn có chắc muốn đăng xuất?</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/Home/signout" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Đăng Xuất</a>
+                        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" data-dismiss="modal">Đóng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!---botrapsmenu-->
+    <div>
+        @RenderBody()
+    </div>
+    <!--Thong tin chung-->
+    <div class="footer">
+
+    </div>
+    <!--javascript-->
+    <script type="text/javascript">
+        function dongTTTaikhoan() {
+            $('#TTTaiKhoan').modal('hide');
+        }
+    </script>
+    <script type="text/javascript">
+        function GuiEmail() {
+            //alert('vao roi');
+            var ten = document.getElementById("dkTen").value;
+            var email = document.getElementById("dkEmail").value;
+            var password = document.getElementById("dkPassword").value;
+            var o = { 'TenDN': `${ten}`, 'Email': `${email}`, 'Pass': `${password}` };
+            ajax.post(o, '/home/check_email', function (data) {
+                kq = JSON.parse(data);
+                if (kq == 1) {
+                    window.location = "/home/index";
+                } else if (kq == 0) {
+                    alert("Nhập sai mã");
+                } else if (kq == 2) {
+                    alert("Vui lòng nhập mã");
+                }
+            });
+        }
+
+        function Gui() {
+            alert('da vao dnagh nhap');
+            var Email = document.getElementById("Email").value;
+            var MaBV = document.getElementById("Ma").value;
+            var NhoMa = document.getElementById("NhoMa");
+            // alert(User + '-' + MaBV);
+            var o = { 'User': `${Email}`, 'Ma': `${MaBV}`, 'Remember': `${NhoMa.checked}` };
+            ajax.post(o, '/home/DangNhap', function (data) {
+                kq = JSON.parse(data);
+                if (kq == 1) {
+                    window.location = "/home/index";
+                } else if (kq == 0) {
+                    alert("Nhập sai mã");
+                } else if (kq == 2) {
+                    alert("Vui lòng nhập mã");
+                }
+            });
+        }
+        function DKGui() {
+            alert('vvao gui');
+            var ten = document.getElementById("Ten").value;
+            var email = document.getElementById("Email").value;
+            var code = document.getElementById("Code").value;
+            var password = document.getElementById("Password").value;
+            var passAgain = document.getElementById("AgainPass").value;
+
+            alert('vvao gui 2');
+            // kiem tra lai mk
+            if (true) {
+            }
+            //alert(User);
+            var o = { 'TenDN': `${ten}`, 'Email': `${email}`, 'Code': `${code}`, 'Password': `${password}`, 'AgainPass': `${passAgain}` };
+            ajax.post(o, '/home/dang_ky', function (data) {
+                alert(data);
+                kq = JSON.parse(data);
+                if (kq == 1) {
+                    window.location = "/home/index";
+                } else if (kq == 0) {
+                    alert("Nhập sai mã");
+                } else if (kq == 2) {
+                    alert("Vui lòng nhập mã");
+                }
+            });
+        }
+        function YeuCau() {
+            alert("Xin lỗi! bạn cần nhập mã")
+        }
+    </script>
+</body>
+</html>
